@@ -12,4 +12,10 @@ add_executable(Listy
         "include/Dynamic array.h"
         "include/List(head).h"
         "include/List(head, tail).h"
-        src/main.cpp)
+        "include/Node.h"
+        "include/Head.h"
+        "include/INode.h"
+        src/main.cpp
+        src/Node.cpp
+        "src/List(head).cpp"
+        src/Head.cpp)

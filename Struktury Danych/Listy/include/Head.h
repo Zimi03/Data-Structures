@@ -4,9 +4,16 @@
 
 #ifndef LISTY_HEAD_H
 #define LISTY_HEAD_H
+#include "INode.h"
 
+class Head: public INode{
+private:
+    INode* next;
+public:
+    Head();
+    INode* getNext() override;
+    void setNext(INode* next) override;
 
-class Head {
 
 };
 

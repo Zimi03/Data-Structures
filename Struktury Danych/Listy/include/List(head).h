@@ -4,18 +4,29 @@
 
 #ifndef LISTY_LIST_HEAD_H
 #define LISTY_LIST_HEAD_H
-class List_h{
+#include "Node.h"
+#include "Head.h"
+
+
+class List_h {
 private:
     int size;
-    int *head;
-    int *next;
+    INode *head;
 public:
-     void insert_at_begin();
-    void insert_at_given();
-    void insert_at_end();
-    void delete_at_begin();
-    void delete_at_given();
-    void delete_at_end();
+    List_h();
+    int isEmpty();
+    int getSize();
+
+    void insertFront(int data);
+    int insert(int index, int data);
+    void insertBack(int data);
+    int removeFront();
+    int remove(int index);
+    int removeBack();
+
+    int get(int index);
+    int find(int data);
+
 
 };
 #endif //LISTY_LIST_HEAD_H
