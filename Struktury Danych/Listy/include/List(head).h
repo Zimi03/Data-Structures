@@ -6,7 +6,7 @@
 #define LISTY_LIST_HEAD_H
 #include "Node.h"
 #include "Head.h"
-
+#include <optional>
 
 class List_h {
 private:
@@ -14,17 +14,19 @@ private:
     INode *head;
 public:
     List_h();
+    ~List_h();
     int isEmpty();
     int getSize();
+    void clear();
 
     void insertFront(int data);
     int insert(int index, int data);
     void insertBack(int data);
-    int removeFront();
-    int remove(int index);
-    int removeBack();
+    std::optional<int> removeFront();
+    std::optional<int> remove(int index);
+    std::optional<int> removeBack();
 
-    int get(int index);
+    std::optional<int> get(int index);
     int find(int data);
 
 

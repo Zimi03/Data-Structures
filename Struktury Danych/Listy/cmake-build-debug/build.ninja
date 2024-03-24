@@ -51,28 +51,28 @@ build cmake_object_order_depends_target_Listy: phony || CMakeFiles/Listy.dir
 
 build CMakeFiles/Listy.dir/src/main.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/main.cpp || cmake_object_order_depends_target_Listy
   DEP_FILE = CMakeFiles/Listy.dir/src/main.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
   OBJECT_DIR = CMakeFiles/Listy.dir
   OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
 
 build CMakeFiles/Listy.dir/src/Node.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/Node.cpp || cmake_object_order_depends_target_Listy
   DEP_FILE = CMakeFiles/Listy.dir/src/Node.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
   OBJECT_DIR = CMakeFiles/Listy.dir
   OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
 
 build CMakeFiles/Listy.dir/src/List(head).cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/List(head).cpp || cmake_object_order_depends_target_Listy
   DEP_FILE = "CMakeFiles/Listy.dir/src/List(head).cpp.o.d"
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
   OBJECT_DIR = CMakeFiles/Listy.dir
   OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
 
 build CMakeFiles/Listy.dir/src/Head.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/Head.cpp || cmake_object_order_depends_target_Listy
   DEP_FILE = CMakeFiles/Listy.dir/src/Head.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
   OBJECT_DIR = CMakeFiles/Listy.dir
   OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src

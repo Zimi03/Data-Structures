@@ -33,31 +33,60 @@ void menu_display(unsigned short &zadanie)
     if (zadanie > 8) cout << "Bledny numer zadania" << endl;
 }
 
+void displayListH(List_h &list){
+    int i = 0;
+    optional<int> value;
+    value = list.get(i);
+    while(value !=nullopt) {
+        cout << value.value() << ", ";
+        i++;
+        value = list.get(i);
+    } cout << endl;
+}
 
 
 
 int main(){
     List_h lista;
+
     for(int i = 0; i < 10; i ++){
         lista.insertFront(i);
     }
-    for(int i = 0; i < 10; i ++){
-        cout << lista.get(i) << ", ";
-    }
-    cout << endl;
+    displayListH(lista);
+
 
     lista.insert(1,20);
-    for(int i = 0; i < 11; i ++){
-        cout << lista.get(i) << ", ";
-    }
-    cout << endl;
+    displayListH(lista);
 
     lista.insertBack(20);
-    for(int i = 0; i < 12; i ++){
-        cout << lista.get(i) << ", ";
+    displayListH(lista);
+
+    optional<int> removed = lista.removeFront();
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed first: " << removed.value() << endl;
     }
+    displayListH(lista);
 
+    removed = lista.remove(1);
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed index 1: " << removed.value() << endl;
+    }
+    displayListH(lista);
 
+    removed = lista.removeBack();
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed back: " << removed.value() << endl;
+    }
+    displayListH(lista);
+
+    int found = lista.find(20);
+    cout << "Found 0 on: " << found << " index" << endl;
 
     unsigned short task = 0;
     string data_folder = "/home/grzegorz/Dokumenty/.......";
