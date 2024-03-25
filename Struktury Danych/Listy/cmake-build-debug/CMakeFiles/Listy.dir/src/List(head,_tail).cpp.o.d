@@ -5,8 +5,7 @@ CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o: \
  /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/Tail.h \
  /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/INode.h \
  /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/List(head).h \
- /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/Node.h \
- /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/Head.h \
+ /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/src/IDataStructure.h \
  /usr/include/c++/11/optional /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -35,4 +34,6 @@ CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o: \
  /usr/include/c++/11/bits/stl_iterator_base_types.h \
  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/11/bits/concept_check.h \
- /usr/include/c++/11/debug/assertions.h
+ /usr/include/c++/11/debug/assertions.h \
+ /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/Node.h \
+ /home/grzegorz/Dokumenty/Struktury\ danych/projekt1/Data-Structures/Struktury\ Danych/Listy/include/Head.h

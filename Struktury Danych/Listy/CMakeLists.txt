@@ -16,10 +16,16 @@ add_executable(Listy
         "include/Head.h"
         "include/INode.h"
         "include/Tail.h"
+        "include/read_write.h"
+        "include/IDataStructure.h"
+        "include/Node_extended.h"
         src/main.cpp
         src/Node.cpp
         "src/List(head).cpp"
         src/Head.cpp
         "src/List(head, tail).cpp"
         src/Tail.cpp
-        )
+        src/read_write.cpp
+
+        src/Node_extended.cpp
+)

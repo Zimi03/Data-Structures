@@ -10,6 +10,8 @@ List_h_t::List_h_t(): List_h(){
 
 List_h_t::~List_h_t() {
     clear();
+    delete head;
+    delete tail;
 }
 
 /**

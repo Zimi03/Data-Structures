@@ -10,6 +10,7 @@ List_h::List_h() : size(0) {
 
 List_h::~List_h() {
     clear();
+    delete head;
 }
 
 /**

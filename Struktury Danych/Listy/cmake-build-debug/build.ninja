@@ -91,6 +91,20 @@ build CMakeFiles/Listy.dir/src/Tail.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/Listy.dir
   OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
 
+build CMakeFiles/Listy.dir/src/read_write.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/read_write.cpp || cmake_object_order_depends_target_Listy
+  DEP_FILE = CMakeFiles/Listy.dir/src/read_write.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
+  OBJECT_DIR = CMakeFiles/Listy.dir
+  OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
+
+build CMakeFiles/Listy.dir/src/Node_extended.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /home/grzegorz/Dokumenty/Struktury$ danych/projekt1/Data-Structures/Struktury$ Danych/Listy/src/Node_extended.cpp || cmake_object_order_depends_target_Listy
+  DEP_FILE = CMakeFiles/Listy.dir/src/Node_extended.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/." -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/include" -I"/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Struktury Danych/Listy/src"
+  OBJECT_DIR = CMakeFiles/Listy.dir
+  OBJECT_FILE_DIR = CMakeFiles/Listy.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Listy
@@ -99,7 +113,7 @@ build CMakeFiles/Listy.dir/src/Tail.cpp.o: CXX_COMPILER__Listy_unscanned_Debug /
 #############################################
 # Link the executable Listy
 
-build Listy: CXX_EXECUTABLE_LINKER__Listy_Debug CMakeFiles/Listy.dir/src/main.cpp.o CMakeFiles/Listy.dir/src/Node.cpp.o CMakeFiles/Listy.dir/src/List(head).cpp.o CMakeFiles/Listy.dir/src/Head.cpp.o CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o CMakeFiles/Listy.dir/src/Tail.cpp.o
+build Listy: CXX_EXECUTABLE_LINKER__Listy_Debug CMakeFiles/Listy.dir/src/main.cpp.o CMakeFiles/Listy.dir/src/Node.cpp.o CMakeFiles/Listy.dir/src/List(head).cpp.o CMakeFiles/Listy.dir/src/Head.cpp.o CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o CMakeFiles/Listy.dir/src/Tail.cpp.o CMakeFiles/Listy.dir/src/read_write.cpp.o CMakeFiles/Listy.dir/src/Node_extended.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Listy.dir
   POST_BUILD = :

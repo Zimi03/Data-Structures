@@ -1,15 +1,19 @@
 # ninja log v5
-66	131	1711388436913962112	Listy	92565ff4a4133e85
+273	331	1711404876000302362	Listy	34cbbb59e0b2e402
 1	69	1711385535574617087	CMakeFiles/Listy.dir/src/Head.cpp.o	5469e988e1781b23
 1	15	1711147247547593781	CMakeFiles/Listy.dir/include/Head.cpp.o	95f5870d0b2bd2db
-0	13	1711388461426296156	build.ninja	9d64275b46775fc4
+1	9	1711404655652805427	CMakeFiles/Listy.dir/include/Node_extended.cpp.o	1642b2f3b3b7b019
+0	13	1711405435738748061	build.ninja	9d64275b46775fc4
 1	69	1711385535574617087	CMakeFiles/Listy.dir/src/Node.cpp.o	7ae968ecf841eb9e
-1	66	1711388436849961202	CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o	3d91b847db3c14d4
+0	73	1711403853708310928	CMakeFiles/Listy.dir/src/List(head,_tail).cpp.o	3d91b847db3c14d4
+1	272	1711404825345134224	CMakeFiles/Listy.dir/src/read_write.cpp.o	c175cd28aa315c8e
 1	15	1711388436801960520	CMakeFiles/Listy.dir/src/Tail.cpp.o	2fa1203122aed81d
 1	10	1711147570822024175	CMakeFiles/Listy.dir/src/INode.cpp.o	8b554cfe5505f2b0
-1	110	1711385535614674474	CMakeFiles/Listy.dir/src/List(head).cpp.o	e96f982647dd7404
-1	248	1711388215841217818	CMakeFiles/Listy.dir/src/main.cpp.o	63bc005d453c4d54
+0	73	1711403853708310928	CMakeFiles/Listy.dir/src/List(head).cpp.o	e96f982647dd7404
+0	273	1711404875940307893	CMakeFiles/Listy.dir/src/main.cpp.o	63bc005d453c4d54
 1	66	1711388091040276436	CMakeFiles/Listy.dir/src/LIst(head,_tail).cpp.o	60ca0f5d092d6041
 2	69	1711385535574617087	CMakeFiles/Listy.dir/include/Tail.cpp.o	ce51116976b25961
-0	248	1711388544923250545	CMakeFiles/Listy.dir/src/main.cpp.o	63bc005d453c4d54
-248	308	1711388544983251143	Listy	92565ff4a4133e85
+0	10	1711405437170676992	CMakeFiles/Listy.dir/src/Node_extended.cpp.o	8b9500923f90992a
+0	269	1711405437426664298	CMakeFiles/Listy.dir/src/read_write.cpp.o	c175cd28aa315c8e
+0	278	1711405437438663703	CMakeFiles/Listy.dir/src/main.cpp.o	63bc005d453c4d54
+278	339	1711405437498660729	Listy	241b6e1dcdb619

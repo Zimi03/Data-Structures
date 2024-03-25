@@ -1,13 +1,13 @@
 #include<iostream>
+#include <fstream>
 #include "Dynamic array.h"
 #include "List(head).h"
 #include "List(head, tail).h"
 #include "Double Linked List.h"
-
+#include "read_write.h"
+#include "IDataStructure.h"
 
 using namespace std;
-
-
 
 
 /**
@@ -33,31 +33,31 @@ void menu_display(unsigned short &zadanie)
     if (zadanie > 8) cout << "Bledny numer zadania" << endl;
 }
 
-void displayListH(List_h &list){
+void displayListH(IDataStructure* list){
     int i = 0;
     optional<int> value;
-    value = list.get(i);
+    value = list->get(i);
     while(value !=nullopt) {
         cout << value.value() << ", ";
         i++;
-        value = list.get(i);
+        value = list->get(i);
     } cout << endl;
 }
 
-void list_h_test(List_h lista){
+void list_h_test(IDataStructure* lista){
     for(int i = 0; i < 10; i ++){
-        lista.insertFront(i);
+        lista->insertFront(i);
     }
     displayListH(lista);
 
 
-    lista.insert(10,30);
+    lista->insert(10,30);
     displayListH(lista);
 
-    lista.insertBack(20);
+    lista->insertBack(20);
     displayListH(lista);
 
-    optional<int> removed = lista.removeFront();
+    optional<int> removed = lista->removeFront();
     if(removed==nullopt){
         cout << "NULLOPT" << endl;
     } else {
@@ -65,7 +65,7 @@ void list_h_test(List_h lista){
     }
     displayListH(lista);
 
-    removed = lista.remove(1);
+    removed = lista->remove(1);
     if(removed==nullopt){
         cout << "NULLOPT" << endl;
     } else {
@@ -73,7 +73,7 @@ void list_h_test(List_h lista){
     }
     displayListH(lista);
 
-    removed = lista.removeBack();
+    removed = lista->removeBack();
     if(removed==nullopt){
         cout << "NULLOPT" << endl;
     } else {
@@ -81,58 +81,18 @@ void list_h_test(List_h lista){
     }
     displayListH(lista);
 
-    int found = lista.find(30);
-    cout << "Found 20 on: " << found << " index" << endl;
+    int found = lista->find(30);
+    cout << "Found 30 on: " << found << " index" << endl;
 }
 
-void list_h_t_test(List_h_t lista){
-    for(int i = 0; i < 10; i ++){
-        lista.insertFront(i);
-    }
-    displayListH(lista);
-
-
-    lista.insert(10,30);
-    displayListH(lista);
-
-    lista.insertBack(20);
-    displayListH(lista);
-
-    optional<int> removed = lista.removeFront();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed first: " << removed.value() << endl;
-    }
-    displayListH(lista);
-
-    removed = lista.remove(10);
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed index 10: " << removed.value() << endl;
-    }
-    displayListH(lista);
-
-    removed = lista.removeBack();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed back: " << removed.value() << endl;
-    }
-    displayListH(lista);
-
-    int found = lista.find(5);
-    cout << "Found 5 on: " << found << " index" << endl;
-}
 
 int main(){
     cout << "\tLIST HEAD" << endl;
     List_h lista;
-    list_h_test(lista);
+    list_h_test(&lista);
     cout << endl << "\tLIST HEAD TAIL" << endl;
     List_h_t lista2;
-    list_h_t_test(lista2);
+    list_h_test(&lista2);
 
 
 
