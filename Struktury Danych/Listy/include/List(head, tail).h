@@ -4,19 +4,26 @@
 
 #ifndef LISTY_LIST_HEAD_TAIL_H
 #define LISTY_LIST_HEAD_TAIL_H
+#include "Tail.h"
 #include "List(head).h"
-class List_h_t{ // a może dziedziczenie z klasy LIST(HEAD)
+class List_h_t: public List_h{ // a może dziedziczenie z klasy LIST(HEAD)
 private:
-    int size;
-    int *head;
-    int *tail;
-    int *next;
+    INode *tail;
+
 public:
-    void insert_at_begin();
-    void insert_at_given(int &index);
-    void insert_at_end();
-    void delete_at_begin();
-    void delete_at_given(int &index);
-    void delete_at_end();
+    List_h_t();
+    ~List_h_t();
+
+    void clear();
+
+    void insertFront(int data);
+    int insert(int index, int data);
+    void insertBack(int data);
+
+    std::optional<int> removeFront();
+    std::optional<int> remove(int index);
+
+    std::optional<int> get(int index);
+
 };
 #endif //LISTY_LIST_HEAD_TAIL_H

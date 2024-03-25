@@ -9,7 +9,7 @@
 #include <optional>
 
 class List_h {
-private:
+protected:
     int size;
     INode *head;
 public:
@@ -22,6 +22,7 @@ public:
     void insertFront(int data);
     int insert(int index, int data);
     void insertBack(int data);
+
     std::optional<int> removeFront();
     std::optional<int> remove(int index);
     std::optional<int> removeBack();

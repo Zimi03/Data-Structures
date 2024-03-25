@@ -14,7 +14,9 @@ private:
 public:
     explicit Node(INode* _next, int _data);
     INode* getNext() override;
-    void setNext(INode* _next) override;
+    int setNext(INode* _next) override;
+    INode* getPrevious() override;
+    int setPrevious(INode* _previous) override;
     int getData();
 };
 

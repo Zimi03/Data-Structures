@@ -15,7 +15,11 @@ add_executable(Listy
         "include/Node.h"
         "include/Head.h"
         "include/INode.h"
+        "include/Tail.h"
         src/main.cpp
         src/Node.cpp
         "src/List(head).cpp"
-        src/Head.cpp)
+        src/Head.cpp
+        "src/List(head, tail).cpp"
+        src/Tail.cpp
+        )

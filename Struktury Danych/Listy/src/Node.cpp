@@ -10,8 +10,18 @@ Node::Node(INode *_next, int _data) :  data(_data) {
 
 INode* Node::getNext() {return next;}
 
-int Node::getData() {return data;}
 
-void Node::setNext(INode* _next) {
+int Node::setNext(INode* _next) {
     next = _next;
+    return 0;
 }
+
+INode* Node::getPrevious() {
+    return nullptr;
+}
+
+int Node::setPrevious(INode* _previous) {
+    return 1;
+}
+
+int Node::getData() {return data;}

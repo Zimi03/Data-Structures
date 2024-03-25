@@ -1,23 +1,21 @@
 //
-// Created by grzegorz on 22.03.24.
+// Created by grzegorz on 25.03.24.
 //
 
-#ifndef LISTY_HEAD_H
-#define LISTY_HEAD_H
+#ifndef LISTY_TAIL_H
+#define LISTY_TAIL_H
 #include "INode.h"
 
-class Head: public INode{
+class Tail:public INode{
 private:
-    INode* next;
+    INode* previous; // in the reverse order - means previous
 public:
-    Head();
+    Tail();
     INode* getNext() override;
     int setNext(INode* next) override;
     INode* getPrevious() override;
     int setPrevious(INode* _previous) override;
-
-
 };
 
 
-#endif //LISTY_HEAD_H
+#endif //LISTY_TAIL_H

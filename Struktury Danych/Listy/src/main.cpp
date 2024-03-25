@@ -44,18 +44,14 @@ void displayListH(List_h &list){
     } cout << endl;
 }
 
-
-
-int main(){
-    List_h lista;
-
+void list_h_test(List_h lista){
     for(int i = 0; i < 10; i ++){
         lista.insertFront(i);
     }
     displayListH(lista);
 
 
-    lista.insert(1,20);
+    lista.insert(10,30);
     displayListH(lista);
 
     lista.insertBack(20);
@@ -85,8 +81,60 @@ int main(){
     }
     displayListH(lista);
 
-    int found = lista.find(20);
-    cout << "Found 0 on: " << found << " index" << endl;
+    int found = lista.find(30);
+    cout << "Found 20 on: " << found << " index" << endl;
+}
+
+void list_h_t_test(List_h_t lista){
+    for(int i = 0; i < 10; i ++){
+        lista.insertFront(i);
+    }
+    displayListH(lista);
+
+
+    lista.insert(10,30);
+    displayListH(lista);
+
+    lista.insertBack(20);
+    displayListH(lista);
+
+    optional<int> removed = lista.removeFront();
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed first: " << removed.value() << endl;
+    }
+    displayListH(lista);
+
+    removed = lista.remove(10);
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed index 10: " << removed.value() << endl;
+    }
+    displayListH(lista);
+
+    removed = lista.removeBack();
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed back: " << removed.value() << endl;
+    }
+    displayListH(lista);
+
+    int found = lista.find(5);
+    cout << "Found 5 on: " << found << " index" << endl;
+}
+
+int main(){
+    cout << "\tLIST HEAD" << endl;
+    List_h lista;
+    list_h_test(lista);
+    cout << endl << "\tLIST HEAD TAIL" << endl;
+    List_h_t lista2;
+    list_h_t_test(lista2);
+
+
 
     unsigned short task = 0;
     string data_folder = "/home/grzegorz/Dokumenty/.......";
