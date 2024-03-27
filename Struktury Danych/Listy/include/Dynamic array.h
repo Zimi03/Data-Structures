@@ -13,12 +13,17 @@ private:
     int size;
     int capacity;
 public:
-     void insert_at_begin();
-    void insert_at_given();
-    void insert_at_end();
-    void delete_at_begin();
-    void delete_at_given();
+    DynamicArray();
+    DynamicArray(int capacity);
+    int get_size();
+    int get_capcity();
+    int find(int value);
+    void insert_at_given(int value, int index);
+    void insert_at_end(int value);
+    void delete_at_given(int index);
     void delete_at_end();
-
+    void grow();
+    void shrink();
+    ~DynamicArray();
 };
 #endif //LISTY_DYNAMIC_ARRAY_H

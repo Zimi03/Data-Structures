@@ -28,4 +28,5 @@ add_executable(Listy
         src/read_write.cpp
 
         src/Node_extended.cpp
+        src/Dynamic_array.cpp
 )
