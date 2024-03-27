@@ -55,7 +55,7 @@ void DynamicArray::delete_at_given(int index) {
     }
     size--; // decreasing size of array
     if(size < (capacity/2)) shrink(); // shrinking array if needed
-    }
+    
 }
 
 void DynamicArray::delete_at_end() {
