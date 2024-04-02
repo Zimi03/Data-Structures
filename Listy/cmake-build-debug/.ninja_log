@@ -1,0 +1,23 @@
+# ninja log v5
+221	760	7337740912300493	CMakeFiles/Listy.dir/src/List(head,_tail).cpp.obj	ca1eb56f1eebee10
+96	317	7337740907863142	CMakeFiles/Listy.dir/src/Tail.cpp.obj	7b2a53701de03bde
+40	583	7337740910552307	CMakeFiles/Listy.dir/src/List(head).cpp.obj	cf500a5bd21ec05
+7	2393	7337740928881115	CMakeFiles/Listy.dir/src/main.cpp.obj	b01e99ca0e9cc95c
+23	220	7337740907073877	CMakeFiles/Listy.dir/src/Node.cpp.obj	af91413957ce875d
+317	1737	7337740922316668	CMakeFiles/Listy.dir/src/Dynamic_array.cpp.obj	1418dc1cc29bff01
+584	762	7337740912543120	CMakeFiles/Listy.dir/src/Node_extended.cpp.obj	93d9d86be6972dd8
+58	262	7337740907547777	CMakeFiles/Listy.dir/src/Head.cpp.obj	e5d75f5fa11e68f4
+262	1458	7337740919528280	CMakeFiles/Listy.dir/src/test.cpp.obj	b62eadf6c374b22c
+75	2072	7337740925681027	CMakeFiles/Listy.dir/src/read_write.cpp.obj	ea95b5ad4140d6c1
+2393	2653	7337740931419434	Listy.exe	5b929b352fd8d70d
+25	236	7337742358924820	CMakeFiles/Listy.dir/src/Node.cpp.obj	af91413957ce875d
+58	258	7337742359145899	CMakeFiles/Listy.dir/src/Head.cpp.obj	e5d75f5fa11e68f4
+96	341	7337742359971415	CMakeFiles/Listy.dir/src/Tail.cpp.obj	7b2a53701de03bde
+341	501	7337742361600848	CMakeFiles/Listy.dir/src/Node_extended.cpp.obj	93d9d86be6972dd8
+41	548	7337742362033219	CMakeFiles/Listy.dir/src/List(head).cpp.obj	cf500a5bd21ec05
+237	731	7337742363879108	CMakeFiles/Listy.dir/src/List(head,_tail).cpp.obj	ca1eb56f1eebee10
+259	1475	7337742371265841	CMakeFiles/Listy.dir/src/test.cpp.obj	b62eadf6c374b22c
+502	1857	7337742375137701	CMakeFiles/Listy.dir/src/Dynamic_array.cpp.obj	1418dc1cc29bff01
+75	2210	7337742378671439	CMakeFiles/Listy.dir/src/read_write.cpp.obj	ea95b5ad4140d6c1
+7	2758	7337742384155507	CMakeFiles/Listy.dir/src/main.cpp.obj	b01e99ca0e9cc95c
+2759	3076	7337742387273344	Listy.exe	5b929b352fd8d70d
