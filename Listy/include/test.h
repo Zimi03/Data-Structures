@@ -19,6 +19,6 @@ long double test_removeFront(IDataStructure** sd, int n);
 long double test_remove(IDataStructure** sd, int* index, int n);
 long double test_removeBack(IDataStructure** sd, int n);
 
-long double test_find(IDataStructure** sd, int* values, int n);
+long double test_find(IDataStructure** sd, int* values, int number_of_tests, int number_of_values);
 
 #endif //LISTY_TEST_H

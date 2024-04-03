@@ -79,16 +79,19 @@ long double test_removeBack(IDataStructure** sd, int n){
     return ((double)time/CLOCKS_PER_SEC)/n;
 }
 
-long double test_find(IDataStructure** sd, int* values, int n){
-    if (n <= 0) return -1; // checks if number of operations greater than 0
+long double test_find(IDataStructure** sd, int* values, int number_of_tests, int number_of_values){
+    if (number_of_tests <= 0) return -1; // checks if number of operations greater than 0
 
     long time_start = clock();
-    for (int i = 0; i < n; i++) {
-        sd[i]->find(values[i]);
+    for(int j = 0; j < number_of_tests; j++){
+        for (int i = 0; i < number_of_values; i++) {
+            sd[0]->find(values[i]);
+        }
     }
+
     long time = clock()-time_start;
 
-    return ((double)time/CLOCKS_PER_SEC)/n;
+    return ((double)time/CLOCKS_PER_SEC)/(number_of_tests*number_of_values);
 }
 
 

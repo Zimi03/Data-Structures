@@ -189,7 +189,7 @@ void structure_test(IDataStructure* lista){
 int main(){
    //TO CI ZOSTAWIAM JAKO SZKIC DO TESTOWANIA STRUKTUR NA MAŁYCH STAŁYCH DANYCH
 
-    cout << "\tLIST HEAD" << endl;
+    cout << "\tDYNAMIC ARRAY " << endl;
     DynamicArray arr;
     structure_test(&arr);
 
@@ -210,7 +210,10 @@ int main(){
     string header = " ";
     string commit = " ";
     long double time = 0;
-    int number = 0, size = 0, value = 0;
+    int number = 0; // liczba testów
+    int size = 0; // rozmiar struktury
+    int value = 0; // wartość do wpisania/usunięcia itp
+    int number_of_values = 0; // zmienna pomocnicza funkcji find oznaczająca ile danych ma być znajdowanych
     unsigned int firstChocie = 0, secondChoice = 0;
 
     do {
@@ -278,7 +281,8 @@ int main(){
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
                             tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "random_" + to_string(number)) != 0){
+                            path = data_folder + "rev_" + to_string(size) + ".txt";
+                            if(readTxt(tab_index, number, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
@@ -347,7 +351,8 @@ int main(){
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
                             tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "random_" + to_string(number)) != 0){
+                            path = data_folder + "rev_" + to_string(size) + ".txt";
+                            if(readTxt(tab_index, number, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
@@ -395,25 +400,32 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "find_" + to_string(number)) != 0){
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            number_of_values = typeNumber();
+                            path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            tab_index = new int [number_of_values];
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
-                            }
+                            } else cout << "Odczyatno dane z pliku: " << path << endl;
+
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure* [1];
+                            structure[0] = new List_h(list_h);
                             // test
-                            time = test_find(structure, tab_index, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            writeCSV(data_folder + "testy", "List_h_find.csv", header, commit);
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete structure[0];
                             delete[] structure; structure = nullptr;
+                            delete[] tab_index; tab_index = nullptr;
                             break;
         /* DISPLAY */
                         case 8:
@@ -482,7 +494,8 @@ int main(){
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
                             tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "random_" + to_string(number)) != 0){
+                            path = data_folder + to_string(size) + ".txt";
+                            if(readTxt(tab_index, number, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
@@ -552,7 +565,8 @@ int main(){
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
                             tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "random_" + to_string(number)) != 0){
+                            path = data_folder + to_string(size) + ".txt";
+                            if(readTxt(tab_index, number, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
@@ -600,25 +614,33 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
-                            if(readTxt(tab_index, number, data_folder + "/find_" + to_string(number)) != 0){
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            number_of_values = typeNumber();
+                            path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            tab_index = new int [number_of_values];
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
-                            }
+                            } else cout << "Odczyatno dane z pliku: " << path << endl;
+
+
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
+                            structure = new IDataStructure* [1];
+                            structure[0] = new List_h_t(list_h_t);
                             // test
-                            time = test_find(structure,tab_index,number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit);
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete structure[0];
                             delete[] structure; structure = nullptr;
+                            delete[] tab_index; tab_index = nullptr;
                             break;
         /* DISPLAY */
                         case 8:
@@ -691,7 +713,7 @@ int main(){
                     clearInputStream();
                     cin >> commit;
                     if(commit == "t"){
-                        path = "find_" + to_string(value) + ".txt";
+                        path = "find_" + to_string(value) + "_" + to_string(size) + ".txt";
                         cout << "Nazwa pliku: " << data_folder << path << endl;
                         break;
                     } else if (commit == "n"){
@@ -701,6 +723,7 @@ int main(){
                             cout << "Błedny wybór" << endl;
                     }
                 } while(commit != "n");
+
 
                 random_int(tab_index, size, 0, value);
 
@@ -720,8 +743,6 @@ int main(){
                         cout << "Błedny wybór" << endl;
                     }
                 } while(commit != "n");
-
-                delete[] tab_index;
 
                 break;
             default:
