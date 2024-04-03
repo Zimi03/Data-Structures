@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Listy"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Listy">
+				<Option output="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Listy.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/."/>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include"/>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 Listy"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Listy/fast">
+				<Option output="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Listy.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/."/>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include"/>
+					<Add directory="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 Listy/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Double Linked List.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Dynamic array.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Head.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/IDataStructure.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/INode.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/List(head).h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/List(head, tail).h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Node.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Node_extended.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/Tail.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/read_write.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/include/test.h">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/Dynamic_array.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/Head.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/List(head).cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/List(head, tail).cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/Node.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/Node_extended.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/Tail.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/main.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/read_write.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/src/test.cpp">
+			<Option target="Listy"/>
+		</Unit>
+		<Unit filename="D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Struktury Danych/Listy/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
