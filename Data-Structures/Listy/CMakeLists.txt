@@ -32,4 +32,5 @@ add_executable(Listy
         src/test.cpp
         include/test.h
         src/test.cpp
+        src/DoublyLinkedList.cpp
 )

@@ -18,13 +18,10 @@
 
 using namespace std;
 
-
-
 void clearInputStream() {
     std::cin.clear(); // Czyszczenie flag błędów
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignorowanie wszystkich pozostałych znaków w buforze
 }
-
 
 unsigned int typeNumberU(){
     unsigned int i = 0;
@@ -49,7 +46,6 @@ int typeNumber(){
     }
     return i;
 }
-
 
 void typeNumber(int &n1, string s1, int &n2, string s2){
     cout << s1;
@@ -87,8 +83,6 @@ void reverse_array(int* &tab, int &n){
     delete[] tab;
     tab = tmp;
 }
-
-
 
 
 /**
@@ -136,7 +130,7 @@ void display(IDataStructure* list){
     int i = 0;
     optional<int> value;
     value = list->get(i);
-    while(value != nullopt) {
+    while (value != nullopt) {
         cout << value.value() << ", ";
         i++;
         value = list->get(i);
@@ -149,49 +143,47 @@ void structure_test(IDataStructure* lista){
     }
     display(lista);
 
-
-    lista->insert(10,30);
-    display(lista);
-
-    lista->insertBack(20);
-    display(lista);
-
-    optional<int> removed = lista->removeFront();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed first: " << removed.value() << endl;
-    }
-    display(lista);
-
-    removed = lista->remove(1);
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed index 1: " << removed.value() << endl;
-    }
-    display(lista);
-
-    removed = lista->removeBack();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
-    } else {
-        cout << "Removed back: " << removed.value() << endl;
-    }
-    display(lista);
-
-    int found = lista->find(30);
-    cout << "Found 30 on: " << found << " index" << endl;
+//    lista->insert(10,30);
+//    display(lista);
+//
+//    lista->insertBack(20);
+//    display(lista);
+//
+//    optional<int> removed = lista->removeFront();
+//    if(removed==nullopt){
+//        cout << "NULLOPT" << endl;
+//    } else {
+//        cout << "Removed first: " << removed.value() << endl;
+//    }
+//    display(lista);
+//
+//    removed = lista->remove(1);
+//    if(removed==nullopt){
+//        cout << "NULLOPT" << endl;
+//    } else {
+//        cout << "Removed index 1: " << removed.value() << endl;
+//    }
+//    display(lista);
+//
+//    removed = lista->removeBack();
+//    if(removed==nullopt){
+//        cout << "NULLOPT" << endl;
+//    } else {
+//        cout << "Removed back: " << removed.value() << endl;
+//    }
+//    display(lista);
+//
+//    int found = lista->find(30);
+//    cout << "Found 30 on: " << found << " index" << endl;
 }
-
 
 
 int main(){
    //TO CI ZOSTAWIAM JAKO SZKIC DO TESTOWANIA STRUKTUR NA MAŁYCH STAŁYCH DANYCH
 
     cout << "\tLIST HEAD" << endl;
-    DynamicArray arr;
-    structure_test(&arr);
+    DLL dll;
+    structure_test(&dll);
 
 
     string data_folder = "/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Listy/Dane/";
@@ -639,7 +631,7 @@ int main(){
                 path = data_folder + "/" + to_string(size) + ".txt";
 
                 // sprawdza czy jest juz taka lista o takim rozmiarze czy nie
-                if(list_d!= nullptr && list_h->getSize() != size) {
+                if(list_d != nullptr && list_h->getSize() != size) {
                     delete list_h;
                     list_h = new List_h;
                     if(readTxt(list_h, size, path) != 0){

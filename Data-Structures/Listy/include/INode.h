@@ -15,6 +15,7 @@ public:
      * @return pointer - success
      */
     virtual INode* getNext() = 0;
+
     /**
      * Gets pionter to previous INode
      * @return nullptr - cannot get or no pointer
@@ -37,9 +38,6 @@ public:
      * @return 0 - success
      */
     virtual int setPrevious(INode* _previous) = 0;
-
-
-
 };
 
 

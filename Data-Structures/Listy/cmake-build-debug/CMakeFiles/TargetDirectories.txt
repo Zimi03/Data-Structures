@@ -1,3 +1,0 @@
-D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Listy/cmake-build-debug/CMakeFiles/Listy.dir
-D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Listy/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/SZYMON/Szkoła/Studia/Sem IV/Struktury Danych/Data-Structures/Listy/cmake-build-debug/CMakeFiles/rebuild_cache.dir

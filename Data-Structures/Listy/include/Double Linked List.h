@@ -16,6 +16,7 @@ private:
     INode *tail;
 public:
     DLL();
+    DLL(DLL *to_copy);
     ~DLL() override;
     int isEmpty();
     int getSize();
