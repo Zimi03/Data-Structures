@@ -917,22 +917,227 @@ int main(){
                 size = typeNumber();
                 path = data_folder + "/" + to_string(size) + ".txt";
                 // sprawdza czy jest juz taka lista o takim rozmiarze czy nie
-                if(list_h!= nullptr && list_h->getSize() != size) {
-                    delete list_h;
-                    list_h = new List_h;
-                    if(readTxt(list_h, size, path) != 0){
+                if(dynArr!= nullptr && dynArr->getSize() != size) {
+                    delete dynArr;
+                    dynArr = new DynamicArray;
+                    if(readTxt(dynArr, size, path) != 0){
                         cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                         break;
                     }
                 } else {
-                    list_h = new List_h;
-                    if(readTxt(list_h, size, path) != 0){
+                    dynArr = new DynamicArray;
+                    if(readTxt(dynArr, size, path) != 0){
                         cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                         break;
                     }
                 }
                 cout << "Wczytano dane z pliku: " << path << endl;
 
+                do{
+                    menuSecondLevel(firstChocie, secondChoice, size);
+                    switch (secondChoice) {
+                        case 0:
+                            cout << "Quiting from List(head, tail)" << endl;
+                            break;
+        /* INSERT FRONT */
+                        case 1:
+                            cout << "\t# INSERT FRONT #" << endl;
+                            typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number];
+                            for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr); // przygotuj odpowiednią ilość struktur
+                            // test
+                            time = test_insertFront(structure, value, number); // test
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            break;
+        /* INSERT */
+                        case 2:
+                            cout << "\t# INSERT #" << endl;
+                            typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
+                            if (number <= 0) break;
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
+                            path = data_folder + to_string(size) + ".txt";
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            if(readTxt(tab_index, number_of_values, path) != 0){
+                                cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
+                                break;
+                            }
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new DynamicArray(dynArr);
+                            // test
+                            time = test_insert(structure, value, tab_index, number, number_of_values); // test
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            delete[] tab_index; tab_index = nullptr;
+                            break;
+
+        /* INSERT BACK */
+                        case 3:
+                            cout << "\t# INSERT BACK #" << endl;
+                            typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
+                            if (number <= 0) break;
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number];
+                            for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
+                            // test
+                            time = test_insertBack(structure, value, number); // test
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            break;
+        /* REMOVE FRONT */
+                        case 4:
+                            cout << "\t# REMOVE FRONT #" << endl;
+                            cout << "Liczba testów: " << endl;
+                            number = typeNumber();
+                            if (number <= 0) break;
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number];
+                            for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
+                            // test
+                            time = test_removeFront(structure, number); // test
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            break;
+        /* REMOVE */
+                        case 5:
+                            cout << "\t# REMOVE #" << endl;
+                            cout << "Liczba testów: ";
+                            number = typeNumber();
+                            if (number <= 0) break;
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
+                            path = data_folder + to_string(size) + ".txt";
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            if(readTxt(tab_index, number_of_values, path) != 0){
+                                cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
+                                break;
+                            }
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new DynamicArray(dynArr);
+                            // test
+                            time = test_remove(structure, tab_index, number, number_of_values); // test
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            delete[] tab_index; tab_index = nullptr;
+                            break;
+        /* REMOVE BACK */
+                        case 6:
+                            cout << "\t# REMOVE BACK #" << endl;
+                            cout << "Liczba testów: " << endl;
+                            number = typeNumber();
+                            if (number <= 0) break;
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [number];
+                            for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
+                            // test
+                            time = test_removeBack(structure,number); // test
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            // TU ZAPIS DO PLIKU CSV
+
+                            // usuwanie struktur
+                            for(int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure; structure = nullptr;
+                            break;
+        /* FIND */
+                        case 7:
+                            cout << "\t# FIND #" << endl;
+                            cout << "Liczba testów: " << endl;
+                            number = typeNumber();
+                            if (number <= 0) break;
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            number_of_values = typeNumber();
+                            path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            tab_index = new int [number_of_values];
+                            if(readTxt(tab_index, number_of_values, path) != 0){
+                                cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
+                                break;
+                            } else cout << "Odczyatno dane z pliku: " << path << endl;
+
+
+                            // przygotuj odpowiednią ilość struktur
+                            structure = new IDataStructure* [1];
+                            structure[0] = new DynamicArray(dynArr);
+                            // test
+                            time = test_find(structure,tab_index,number,number_of_values); // test
+                            time_oss.str("");
+                            time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
+                            cout << "TIME: " << time_oss.str() << endl;
+                            // TU ZAPIS DO PLIKU CSV
+                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit);
+                            // usuwanie struktur
+                            delete structure[0];
+                            delete[] structure; structure = nullptr;
+                            delete[] tab_index; tab_index = nullptr;
+                            break;
+        /* DISPLAY */
+                        case 8:
+                            display(dynArr);
+                            break;
+                        default:
+                            cout << "Nieprawidłowy wybór. Wybierz ponownie." << endl;
+                            break;
+                    }
+                }while(secondChoice != 0);
                 break;
             case 5:
     /* LOSOWANIE DANYCH I ZAPIS DO PLIKU */
@@ -954,7 +1159,6 @@ int main(){
                             cout << "Błedny wybór" << endl;
                     }
                 } while(commit != "n");
-
 
                 random_int(tab_index, size, 0, value);
 
