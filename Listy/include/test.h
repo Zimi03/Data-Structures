@@ -8,7 +8,7 @@
 
 #include "List(head, tail).h"
 #include "List(head).h"
-#include "Double Linked List.h"
+#include "DoubleLinkedList.h"
 #include "Dynamic array.h"
 
 long double test_insertFront(IDataStructure** sd, int data, int n);

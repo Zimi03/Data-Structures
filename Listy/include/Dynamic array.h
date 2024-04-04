@@ -4,10 +4,12 @@
 
 #ifndef LISTY_DYNAMIC_ARRAY_H
 #define LISTY_DYNAMIC_ARRAY_H
+
 #include <cstring>
 #include "IDataStructure.h"
 #include "iostream"
-class DynamicArray: public IDataStructure{
+
+class DynamicArray: public IDataStructure {
 private:
     int *array = nullptr;
     int size;
@@ -33,4 +35,5 @@ public:
     void shrink();
     ~DynamicArray() override;
 };
+
 #endif //LISTY_DYNAMIC_ARRAY_H

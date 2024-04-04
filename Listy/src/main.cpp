@@ -11,14 +11,12 @@
 #include "Dynamic array.h"
 #include "List(head).h"
 #include "List(head, tail).h"
-#include "Double Linked List.h"
+#include "DoubleLinkedList.h"
 #include "read_write.h"
 #include "IDataStructure.h"
 #include "test.h"
 
 using namespace std;
-
-
 
 void clearInputStream() {
     std::cin.clear(); // Czyszczenie flag błędów
@@ -140,7 +138,8 @@ void display(IDataStructure* list){
         cout << value.value() << ", ";
         i++;
         value = list->get(i);
-    } cout << endl;
+    }
+    cout << endl;
 }
 
 void structure_test(IDataStructure* lista){
@@ -149,32 +148,37 @@ void structure_test(IDataStructure* lista){
     }
     display(lista);
 
-
     lista->insert(10,30);
     display(lista);
 
     lista->insertBack(20);
     display(lista);
 
+    lista->insertFront(40);
+    display(lista);
+
     optional<int> removed = lista->removeFront();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
+    if (removed==nullopt) {
+        cout << "Removed first: NULLOPT" << endl;
     } else {
         cout << "Removed first: " << removed.value() << endl;
     }
     display(lista);
 
     removed = lista->remove(1);
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
+    if (removed==nullopt) {
+        cout << "Removed index 1: NULLOPT" << endl;
     } else {
         cout << "Removed index 1: " << removed.value() << endl;
     }
     display(lista);
 
+    lista->insert(1, 50);
+    display(lista);
+
     removed = lista->removeBack();
-    if(removed==nullopt){
-        cout << "NULLOPT" << endl;
+    if (removed==nullopt) {
+        cout << "Removed back: NULLOPT" << endl;
     } else {
         cout << "Removed back: " << removed.value() << endl;
     }
@@ -189,10 +193,11 @@ void structure_test(IDataStructure* lista){
 int main(){
    //TO CI ZOSTAWIAM JAKO SZKIC DO TESTOWANIA STRUKTUR NA MAŁYCH STAŁYCH DANYCH
 
-    cout << "\tDYNAMIC ARRAY " << endl;
-    DynamicArray arr;
-    structure_test(&arr);
+    cout << "\tLIST HEAD" << endl;
+    DoubleLinkedList dll;
+    structure_test(&dll);
 
+    return 0;
 
     string data_folder = "/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Listy/Dane/";
     string path = " ";
@@ -200,7 +205,7 @@ int main(){
     IDataStructure** structure = nullptr;
     List_h* list_h = nullptr;
     List_h_t* list_h_t = nullptr;
-    DLL* list_d = nullptr;
+    DoubleLinkedList* list_d = nullptr;
     DynamicArray* dynArr = nullptr;
 
     int* tab_index = nullptr;

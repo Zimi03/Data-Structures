@@ -8,28 +8,28 @@ include_directories(include)
 include_directories(src)
 
 add_executable(Listy
-        "include/Double Linked List.h"
+        "include/DoubleLinkedList.h"
         "include/Dynamic array.h"
-        "include/List(head).h"
-        "include/List(head, tail).h"
-        "include/Node.h"
         "include/Head.h"
-        "include/INode.h"
-        "include/Tail.h"
-        "include/read_write.h"
         "include/IDataStructure.h"
+        "include/INode.h"
+        "include/List(head, tail).h"
+        "include/List(head).h"
         "include/Node_extended.h"
-        src/main.cpp
-        src/Node.cpp
-        "src/List(head).cpp"
-        src/Head.cpp
-        "src/List(head, tail).cpp"
-        src/Tail.cpp
-        src/read_write.cpp
+        "include/Node.h"
+        "include/read_write.h"
+        "include/Tail.h"
+        "include/test.h"
 
-        src/Node_extended.cpp
-        src/Dynamic_array.cpp
-        src/test.cpp
-        include/test.h
-        src/test.cpp
+        "src/DoubleLinkedList.cpp"
+        "src/Dynamic_array.cpp"
+        "src/Head.cpp"
+        "src/List(head, tail).cpp"
+        "src/List(head).cpp"
+        "src/main.cpp"
+        "src/Node_extended.cpp"
+        "src/Node.cpp"
+        "src/read_write.cpp"
+        "src/Tail.cpp"
+        "src/test.cpp"
 )

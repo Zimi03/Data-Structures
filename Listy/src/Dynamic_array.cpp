@@ -1,5 +1,6 @@
 #include "Dynamic array.h"
 #include "optional"
+
 //basic constructor
 DynamicArray::DynamicArray(){
     capacity = 5;
