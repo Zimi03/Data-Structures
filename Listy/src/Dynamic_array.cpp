@@ -7,10 +7,10 @@ DynamicArray::DynamicArray(){
     array = new int [capacity];
     size = 0;
 }
-DynamicArray::DynamicArray(DynamicArray *to_copy) {
+DynamicArray::DynamicArray(DynamicArray *to_copy): size(0), capacity(5) {
     std::optional<int> value;
     int _size = to_copy->getSize();
-
+    array = new int [_size];
     if(_size != 0){
         for (int i = 0; i < _size; i++){
             value = to_copy->get(i);

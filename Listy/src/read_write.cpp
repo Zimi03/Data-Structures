@@ -3,7 +3,6 @@
 //
 
 #include <string>
-//#include <direct.h>
 #include <filesystem>
 #include "read_write.h"
 #include "string"
@@ -155,7 +154,7 @@ int writeCSV(const string& folderpath, const string& filename, const string& hea
     struct stat info;
     if (stat(folderpath.c_str(), &info) != 0) {
         // Jeśli folder nie istnieje -> tworzymy go
-        if (mkdir(folderpath.c_str(), 0777) != 0) {
+        if (mkdir(folderpath.c_str()) != 0) {
             std::cerr << "Nie można utworzyć folderu." << std::endl;
             return 1;
         }

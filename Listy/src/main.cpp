@@ -185,6 +185,9 @@ void structure_test(IDataStructure* lista){
 }
 
 int main(){
+
+    DynamicArray arr;
+    structure_test(&arr);
     string dir_path = std::filesystem::path(__FILE__).parent_path().u8string();
     string data_folder = dir_path + "/../Dane/";
     string path = " ";

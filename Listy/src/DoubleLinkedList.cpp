@@ -8,7 +8,7 @@ DoubleLinkedList::DoubleLinkedList() : size(0) {
     referenceNode = new Node_extended(nullptr, nullptr, NULL);
 }
 
-DoubleLinkedList::DoubleLinkedList(DoubleLinkedList *to_copy) {
+DoubleLinkedList::DoubleLinkedList(DoubleLinkedList *to_copy): size(0) {
     referenceNode = new Node_extended(nullptr, nullptr, NULL);
     std::optional<int> value;
     int _size = to_copy->getSize();
