@@ -1,7 +1,5 @@
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <ctime>
 #include <limits>
 #include <iomanip>
 #include <sstream>
@@ -186,8 +184,6 @@ void structure_test(IDataStructure* lista){
 
 int main(){
 
-    DynamicArray arr;
-    structure_test(&arr);
     string dir_path = std::filesystem::path(__FILE__).parent_path().u8string();
     string data_folder = dir_path + "/../Dane/";
     string path = " ";
@@ -217,8 +213,6 @@ int main(){
             case 0:
                 cout << "EXITING";
                 break;
-
-
 
     /*  LIST - HEAD   */
             case 1: // List(head)
@@ -255,18 +249,21 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure *[number];
                             for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertFront(structure, value, number); // test
-                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
-                            writeCSV(data_folder + "testy", "List_h_insert_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_insert_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_insert_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure;
@@ -293,20 +290,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insert(structure, value, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
-                            writeCSV(data_folder + "testy", "List_h_insert.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_insert.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_insert.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for (int i = 0; i < number; i++) delete structure[i];
+                            for (int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -316,22 +316,24 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure *[number];
                             for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertBack(structure, value, number); // test
-                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
-                            writeCSV(data_folder + "testy", "List_h_insert_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_insert_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_insert_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
-                            delete[] structure;
-                            structure = nullptr;
+                            delete[] structure; structure = nullptr;
                             break;
         /* REMOVE FRONT */
                         case 4:
@@ -340,18 +342,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure *[number];
                             for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeFront(structure, number); // test
-                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
-                            writeCSV(data_folder + "testy", "List_h_remove_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_remove_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_remove_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure;
@@ -364,7 +369,7 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
-                            path = data_folder + "rev_" + to_string(size) + ".txt";
+                            path = data_folder + to_string(size) + ".txt";
                             do {
                                 cout << "Liczba wartosci testowych z pliku " + path + ": ";
                                 number_of_values = typeNumber();
@@ -379,18 +384,21 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_remove(structure, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
-                            writeCSV(data_folder + "testy", "List_h_remove.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_remove.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_remove.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -403,18 +411,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeBack(structure,number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_remove_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_remove_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_remove_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -437,17 +448,21 @@ int main(){
                             } else cout << "Odczyatno dane z pliku: " << path << endl;
 
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [1];
                             structure[0] = new List_h(list_h);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "List_h_find.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_find.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_find.csv" << endl;
+                            }
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
@@ -499,18 +514,21 @@ int main(){
                             cout << "\t# INSERT FRONT #" << endl;
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t); // przygotuj odpowiednią ilość struktur
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertFront(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_insert_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_insert_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_insert_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -536,20 +554,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insert(structure, value, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_insert.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_insert.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_insert.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -560,18 +581,21 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertBack(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_insert_back.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_insert_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_insert_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -583,18 +607,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeFront(structure, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_remove_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_remove_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_remove_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -621,20 +648,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_remove(structure, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_remove.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_remove.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_remove.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -645,18 +675,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeBack(structure,number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "List_h_t_remove_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_remove_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_remove_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -680,17 +713,21 @@ int main(){
 
 
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [1];
                             structure[0] = new List_h_t(list_h_t);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku List_h_t_find.csv" << endl;
+                            }
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
@@ -742,18 +779,21 @@ int main(){
                             cout << "\t# INSERT FRONT #" << endl;
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DoubleLinkedList(list_d); // przygotuj odpowiednią ilość struktur
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertFront(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_insert_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_insert_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_insert_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -779,20 +819,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insert(structure, value, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_insert.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_insert.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_insert.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -803,18 +846,21 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertBack(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_insert_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_insert_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_insert_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -826,18 +872,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeFront(structure, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_remove_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_remove_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_remove_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -864,20 +913,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_remove(structure, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_remove.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_remove.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_remove.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -888,18 +940,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeBack(structure,number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "DLL_remove_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_remove_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_remove_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -923,17 +978,21 @@ int main(){
 
 
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [1];
                             structure[0] = new DoubleLinkedList(list_d);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "DLL_find.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "DLL_find.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku DLL_find.csv" << endl;
+                            }
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
@@ -984,18 +1043,21 @@ int main(){
                             cout << "\t# INSERT FRONT #" << endl;
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr); // przygotuj odpowiednią ilość struktur
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertFront(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_insert_front.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_insert_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_insert_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1021,20 +1083,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insert(structure, value, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_insert.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_insert.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_insert.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -1045,18 +1110,21 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_insertBack(structure, value, number); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_insert_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_insert_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_insert_back.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1068,18 +1136,21 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeFront(structure, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_remove_front.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_remove_front.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_remove_front.csv" << endl;
+                            }
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1106,20 +1177,23 @@ int main(){
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number*number_of_values];
                             for(int i = 0; i < number*number_of_values; i++) structure[i] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_remove(structure, tab_index, number, number_of_values); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
-                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_remove.csv", header, commit);
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_remove.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_remove.csv" << endl;
+                            }
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -1130,18 +1204,22 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [number];
                             for(int i = 0; i < number; i++) structure[i] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_removeBack(structure,number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów";
+                            header = "liczba danych, czas [ms], liczba testów";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
-                            writeCSV(data_folder + "testy", "Dynamic_array_remove_back.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_remove_back.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_remove_back.csv" << endl;
+                            }
+
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1161,21 +1239,24 @@ int main(){
                             if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
-                            } else cout << "Odczyatno dane z pliku: " << path << endl;
-
+                            } else cout << "Odczytano dane z pliku: " << path << endl;
 
                             // przygotuj odpowiednią ilość struktur
+                            cout << "Przygotowywanie danych..." << endl;
                             structure = new IDataStructure* [1];
                             structure[0] = new DynamicArray(dynArr);
                             // test
+                            cout << "Testowanie..." << endl;
                             time = test_find(structure,tab_index,number,number_of_values); // test
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
+                            header = "liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "Dynamic_array_find.csv", header, commit);
+                            if(0 == writeCSV(data_folder + "testy", "Dynamic_array_find.csv", header, commit)) {
+                                cout << "Dodano wyniki testu do pliku Dynamic_array_find.csv" << endl;
+                            }
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
