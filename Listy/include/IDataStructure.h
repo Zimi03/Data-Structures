@@ -4,6 +4,7 @@
 
 #ifndef LISTY_IDATASTRUCTURE_H
 #define LISTY_IDATASTRUCTURE_H
+
 #include <optional>
 
 class IDataStructure{

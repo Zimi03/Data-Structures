@@ -6,7 +6,7 @@
 #define LISTY_READ_WRITE_H
 #include "List(head).h"
 #include "List(head, tail).h"
-#include "Double Linked List.h"
+#include "DoubleLinkedList.h"
 #include "Dynamic array.h"
 #include <iostream>
 #include <fstream>

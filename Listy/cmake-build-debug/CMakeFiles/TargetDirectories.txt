@@ -1,3 +1,0 @@
-/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Listy/cmake-build-debug/CMakeFiles/Listy.dir
-/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Listy/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/grzegorz/Dokumenty/Struktury danych/projekt1/Data-Structures/Listy/cmake-build-debug/CMakeFiles/rebuild_cache.dir
