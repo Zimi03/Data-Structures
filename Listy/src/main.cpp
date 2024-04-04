@@ -260,37 +260,46 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure *[number];
+                            for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
                             time = test_insertFront(structure, value, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
                             commit = time_oss.str() + "," + to_string(size) + "," + to_string(number);
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
-                            delete[] structure; structure = nullptr;
+                            for (int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure;
+                            structure = nullptr;
                             break;
         /* INSERT */
                         case 2:
                             cout << "\t# INSERT #" << endl;
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
+                            path = data_folder + to_string(size) + ".txt";
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
-                            path = data_folder + "rev_" + to_string(size) + ".txt";
-                            if(readTxt(tab_index, number, path) != 0){
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h(list_h);
                             // test
-                            time = test_insert(structure, value, tab_index, number); // test
+                            time = test_insert(structure, value, tab_index, number, number_of_values); // test
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
@@ -298,7 +307,7 @@ int main(){
                             // TU ZAPIS DO PLIKU CSV
 
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -308,19 +317,20 @@ int main(){
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure *[number];
+                            for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
                             time = test_insertBack(structure, value, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
 
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
-                            delete[] structure; structure = nullptr;
+                            for (int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure;
+                            structure = nullptr;
                             break;
         /* REMOVE FRONT */
                         case 4:
@@ -329,38 +339,47 @@ int main(){
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure *[number];
+                            for (int i = 0; i < number; i++) structure[i] = new List_h(list_h);
                             // test
                             time = test_removeFront(structure, number); // test
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
+                            for (int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
 
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
-                            delete[] structure; structure = nullptr;
+                            for (int i = 0; i < number; i++) delete structure[i];
+                            delete[] structure;
+                            structure = nullptr;
                             break;
         /* REMOVE */
                         case 5:
                             cout << "\t# REMOVE #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
-                            // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
                             path = data_folder + "rev_" + to_string(size) + ".txt";
-                            if(readTxt(tab_index, number, path) != 0){
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h(list_h);
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h(list_h);
                             // test
-                            time = test_remove(structure, tab_index, number); // test
+                            time = test_remove(structure, tab_index, number, number_of_values); // test
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
@@ -368,7 +387,7 @@ int main(){
                             // TU ZAPIS DO PLIKU CSV
 
                             // usuwanie struktur
-                            for(int i = 0; i < number; i++) delete structure[i];
+                            for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
                             delete[] tab_index; tab_index = nullptr;
                             break;
@@ -399,7 +418,7 @@ int main(){
                             cout << "Liczba testów: " << endl;
                             number = typeNumber();
                             if (number <= 0) break;
-                            // odczyt danych losowych z pliku txt jesli istnieje
+                            // ile wartosci testowych z pliku find wykorzystac do pojedynczeho testu
                             cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
                             number_of_values = typeNumber();
                             path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
@@ -492,22 +511,30 @@ int main(){
                             cout << "\t# INSERT #" << endl;
                             typeNumber(number, "Liczba testów: ", value, "Liczba do dodania: ");
                             if (number <= 0) break;
-                            // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
                             path = data_folder + to_string(size) + ".txt";
-                            if(readTxt(tab_index, number, path) != 0){
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h_t(list_h_t);
                             // test
-                            time = test_insert(structure, value, tab_index, number); // test
+                            time = test_insert(structure, value, tab_index, number, number_of_values); // test
+                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
-                            for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
 
                             // usuwanie struktur
@@ -560,21 +587,29 @@ int main(){
         /* REMOVE */
                         case 5:
                             cout << "\t# REMOVE #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
-                            // odczyt danych losowych z pliku txt jesli istnieje
-                            tab_index = new int [number];
+                            // ile wartosci testowych z pliku wykorzystac do pojedynczeho testu
                             path = data_folder + to_string(size) + ".txt";
-                            if(readTxt(tab_index, number, path) != 0){
+                            do {
+                                cout << "Liczba wartosci testowych z pliku " + path + ": ";
+                                number_of_values = typeNumber();
+                                if(number_of_values > size){
+                                    cout << "Liczba wartości testowych z pliku musi być mniejsza/równa od rozmiaru struktury."<< endl;
+                                }
+                            } while (number_of_values > size);
+                            tab_index = new int[number_of_values];
+                            // odczyt danych losowych z pliku txt jesli istnieje
+                            if(readTxt(tab_index, number_of_values, path) != 0){
                                 cout << "Nie ma takiego pliku: " << path <<  " w katalogu: " << data_folder << endl;
                                 break;
                             }
                             // przygotuj odpowiednią ilość struktur
-                            structure = new IDataStructure* [number];
-                            for(int i = 0; i < number; i++) structure[i] = new List_h_t(list_h_t);
+                            structure = new IDataStructure* [number*number_of_values];
+                            for(int i = 0; i < number*number_of_values; i++) structure[i] = new List_h_t(list_h_t);
                             // test
-                            time = test_remove(structure, tab_index, number); // test
+                            time = test_remove(structure, tab_index, number, number_of_values); // test
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             time_oss.str("");
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
