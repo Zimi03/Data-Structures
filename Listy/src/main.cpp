@@ -7,6 +7,7 @@
 #include <sstream>
 #include <optional>
 #include <random>
+#include <filesystem>
 
 #include "Dynamic array.h"
 #include "List(head).h"
@@ -260,7 +261,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-                            commit = time_oss.str() + "," + to_string(size) + "," + to_string(number);
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            writeCSV(data_folder + "testy", "List_h_insert_front.csv", header, commit);
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure;
@@ -296,7 +299,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            writeCSV(data_folder + "testy", "List_h_insert.csv", header, commit);
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -317,7 +322,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            writeCSV(data_folder + "testy", "List_h_insert_back.csv", header, commit);
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure;
@@ -339,7 +346,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            writeCSV(data_folder + "testy", "List_h_remove_front.csv", header, commit);
                             // usuwanie struktur
                             for (int i = 0; i < number; i++) delete structure[i];
                             delete[] structure;
@@ -376,7 +385,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number);
+                            writeCSV(data_folder + "testy", "List_h_remove.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number*number_of_values; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -398,7 +409,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_remove_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -492,7 +505,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_insert_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -527,7 +542,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_insert.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -549,7 +566,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_insert_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -570,7 +589,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_remove_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -606,7 +627,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_remove.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -628,7 +651,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "List_h_t_remove_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -723,7 +748,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_insert_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -758,7 +785,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_insert.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -780,7 +809,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_insert_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -801,7 +832,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_remove_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -837,7 +870,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_remove.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -859,7 +894,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "DLL_remove_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -893,7 +930,7 @@ int main(){
                             // TU ZAPIS DO PLIKU CSV
                             header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit);
+                            writeCSV(data_folder + "testy", "DLL_find.csv", header, commit);
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
@@ -953,7 +990,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_insert_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -988,7 +1027,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_insert.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1010,7 +1051,9 @@ int main(){
                             cout << "TIME: " << time_oss.str() << endl;
                             for(int i = 0; i < number; i++) display(structure[i]); // wyswietl czy git
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_insert_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1031,7 +1074,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_remove_front.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1067,7 +1112,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_remove.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1089,7 +1136,9 @@ int main(){
                             time_oss << std::fixed << std::setprecision(precision) << time; // oss czasu do zapisu
                             cout << "TIME: " << time_oss.str() << endl;
                             // TU ZAPIS DO PLIKU CSV
-
+                            header = "liczba danych, czas [s], liczba testów";
+                            commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) ;
+                            writeCSV(data_folder + "testy", "Dynamic_array_remove_back.csv", header, commit);
                             // usuwanie struktur
                             for(int i = 0; i < number; i++) delete structure[i];
                             delete[] structure; structure = nullptr;
@@ -1123,7 +1172,7 @@ int main(){
                             // TU ZAPIS DO PLIKU CSV
                             header = "liczba danych, czas [s], liczba testów, liczba wartości szukanych w każdym teście";
                             commit = to_string(size) + "," + time_oss.str() + "," + to_string(number) + "," + to_string(number_of_values);
-                            writeCSV(data_folder + "testy", "List_h_t_find.csv", header, commit);
+                            writeCSV(data_folder + "testy", "Dynamic_array_find.csv", header, commit);
                             // usuwanie struktur
                             delete structure[0];
                             delete[] structure; structure = nullptr;
