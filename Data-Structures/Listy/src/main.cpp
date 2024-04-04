@@ -134,7 +134,8 @@ void display(IDataStructure* list){
         cout << value.value() << ", ";
         i++;
         value = list->get(i);
-    } cout << endl;
+    }
+    cout << endl;
 }
 
 void structure_test(IDataStructure* lista){
@@ -143,38 +144,38 @@ void structure_test(IDataStructure* lista){
     }
     display(lista);
 
-//    lista->insert(10,30);
-//    display(lista);
-//
-//    lista->insertBack(20);
-//    display(lista);
-//
-//    optional<int> removed = lista->removeFront();
-//    if(removed==nullopt){
-//        cout << "NULLOPT" << endl;
-//    } else {
-//        cout << "Removed first: " << removed.value() << endl;
-//    }
-//    display(lista);
-//
-//    removed = lista->remove(1);
-//    if(removed==nullopt){
-//        cout << "NULLOPT" << endl;
-//    } else {
-//        cout << "Removed index 1: " << removed.value() << endl;
-//    }
-//    display(lista);
-//
-//    removed = lista->removeBack();
-//    if(removed==nullopt){
-//        cout << "NULLOPT" << endl;
-//    } else {
-//        cout << "Removed back: " << removed.value() << endl;
-//    }
-//    display(lista);
-//
-//    int found = lista->find(30);
-//    cout << "Found 30 on: " << found << " index" << endl;
+    lista->insert(10,30);
+    display(lista);
+
+    lista->insertBack(20);
+    display(lista);
+
+    optional<int> removed = lista->removeFront();
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed first: " << removed.value() << endl;
+    }
+    display(lista);
+
+    removed = lista->remove(2);
+    if(removed==nullopt){
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed index 2: " << removed.value() << endl;
+    }
+    display(lista);
+
+    removed = lista->removeBack();
+    if (removed==nullopt) {
+        cout << "NULLOPT" << endl;
+    } else {
+        cout << "Removed back: " << removed.value() << endl;
+    }
+    display(lista);
+
+    int found = lista->find(30);
+    cout << "Found 30 on: " << found << " index" << endl;
 }
 
 

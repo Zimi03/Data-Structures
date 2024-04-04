@@ -4,6 +4,7 @@
 
 #ifndef LISTY_DOUBLE_LINKED_LIST_H
 #define LISTY_DOUBLE_LINKED_LIST_H
+
 #include "IDataStructure.h"
 #include "Head.h"
 #include "Tail.h"
@@ -12,8 +13,7 @@
 class DLL: public IDataStructure{
 private:
     int size;
-    INode *head;
-    INode *tail;
+    INode *referenceNode;
 public:
     DLL();
     DLL(DLL *to_copy);
@@ -27,11 +27,12 @@ public:
     int insert(int index, int data) override;
     void insertBack(int data) override;
 
-    std::optional<int> removeFront() override;
     std::optional<int> remove(int index) override;
+    std::optional<int> removeFront() override;
     std::optional<int> removeBack() override;
 
     std::optional<int> get(int index) override;
+    std::optional<Node_extended*> getByIndex(int index);
     int find(int data) override;
 
 };

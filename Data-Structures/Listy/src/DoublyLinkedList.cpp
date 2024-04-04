@@ -1,17 +1,15 @@
-//
-// Created by Admin on 03.04.2024.
-//
 #include "Double Linked List.h"
 #include <iostream>
+#include <stdexcept>
 
 DLL::DLL() : size(0) {
-    head = new Head();
-    tail = new Tail();
+    // Next -> from HEAD to TAIL (aka HEAD)
+    // Prev -> from TAIL to HEAD (2head meme) (aka TAIL)
+    referenceNode = new Node_extended(nullptr, nullptr, NULL);
 }
 
 DLL::DLL(DLL *to_copy) {
-    head = new Head();
-    tail = new Tail();
+    referenceNode = new Node_extended(nullptr, nullptr, NULL);
     std::optional<int> value;
     int _size = to_copy->getSize();
 
@@ -25,54 +23,64 @@ DLL::DLL(DLL *to_copy) {
     }
 }
 
-DLL:: ~DLL(){
+DLL:: ~DLL() {
     clear();
-    delete head;
-    delete tail;
+    delete referenceNode;
 }
 
 int DLL::isEmpty() {
-    if (head->getNext() == nullptr) {
-        return 1;
-    } else {
-        return 0;
-    }
+    return referenceNode->getNext() == nullptr ? 1 : 0;
 }
 
-int DLL::getSize() {return size;}
+int DLL::getSize() {
+    return size;
+}
 
 void DLL::clear() {
-    INode* current = head->getNext();
+    INode* current = referenceNode->getNext();
     INode* next = nullptr;
 
-    while (current != nullptr){
-        next = current-> getNext();
+    while (current != nullptr) {
+        next = current->getNext();
         delete current;
         current = next;
     }
-    head->setNext(nullptr);
-    tail->setPrevious(nullptr);
+
+    referenceNode->setNext(nullptr);
+    referenceNode->setPrevious(nullptr);
     size = 0;
 }
 
 void DLL::init(int data) {
+    // Because yes
     insertBack(data);
+}
+
+void DLL::insertBack(int data) {
+    if (size == 0) {
+        insertFront(data);
+        return;
+    }
+
+    INode* buf = new Node_extended(nullptr, referenceNode->getPrevious(), data);
+    referenceNode->setPrevious(buf);
+    size++;
 }
 
 void DLL::insertFront(int data) {
     if (size == 0) {
         INode* buf = new Node_extended(nullptr, nullptr, data);
-        head->setNext(buf);
-        tail->setPrevious(buf);
+        referenceNode->setPrevious(buf);
+        referenceNode->setNext(buf);
     } else {
-        INode* next = head->getNext();
+        INode* next = referenceNode->getNext();
         INode* buf = new Node_extended(next, nullptr, data);
-        next->setNext(next->getNext());
-        next->setPrevious(buf);
-        head->setNext(buf);
-        if (next->getPrevious()) {
-            tail->setPrevious(next->getPrevious());
+
+        if (next) {
+            next->setPrevious(buf);
         }
+
+        referenceNode->setNext(buf);
     }
     size++;
 }
@@ -89,7 +97,7 @@ int DLL::insert(int index, int data) {
     if(index > 0 && index < size){
         if (index < (size/2)){
             //index in lower half, we go from head
-            INode* old = head->getNext();
+            INode* old = referenceNode->getNext();
             for(int i = 0;  i < index - 1; i++){
                 old = old->getNext();
             }
@@ -98,8 +106,8 @@ int DLL::insert(int index, int data) {
             size++;
             return 0;
         }else{
-            //index in higher half, we go from tail
-            INode* old = tail->getPrevious();
+            //index in higher half, we go from referenceNode
+            INode* old = referenceNode->getPrevious();
             for(int i = size-1; i > index; i--){
                 old->getPrevious();
             }
@@ -112,103 +120,79 @@ int DLL::insert(int index, int data) {
     return 1;
 }
 
-void DLL::insertBack(int data) {
-    if (size == 0){
-        insertFront(data);
-    }else{
-        INode* current = tail->getPrevious();
-        INode* buf = new Node_extended(nullptr, current->getPrevious(), data);
-        tail->setPrevious(buf);
-        size++;
+std::optional<int> DLL::remove(int index) {
+    std::optional<Node_extended*> node = DLL::getByIndex(index);
+    if (!node.has_value()) return std::nullopt;
+
+    INode* previous = node.value()->getPrevious();
+    INode* next = node.value()->getNext();
+    int value = node.value()->getData();
+
+    if (!referenceNode->getNext()) {
+        std::cout << "Missing getNext" << std::endl;
     }
+
+    if (!referenceNode->getPrevious()) {
+        std::cout << "Missing getPrevious" << std::endl;
+    }
+
+    if (previous) previous->setNext(next);
+    if (next) next->setPrevious(previous);
+    delete node.value();
+
+
+    size--;
+    return value;
 }
 
 std::optional<int> DLL::removeFront() {
-    INode* current = head->getNext();
-
-    if(current != nullptr){
-        INode* next = current->getNext();
-        int data = dynamic_cast<Node_extended*>(current)->getData();
-        delete current;
-        head->setNext(next);
-        size --;
-        return data;
-    }else{
-        return std::nullopt;
-    }
-}
-
-std::optional<int> DLL::remove(int index) {
-    if(index == 0){
-        removeFront();
-    }else if (index == size){
-        removeBack();
-    }
-    if(index > 0 && index <size){
-        if(index < size/2){
-            INode* current = head->getNext();
-            for (int i = 0; i < index -1; i++){
-                current=current->getNext();
-            }
-            INode* next = current->getNext();
-            int data = dynamic_cast<Node_extended*>(next)->getData();
-            current->setNext(next->getNext());
-            delete next;
-            size--;
-            return data;
-        }else{
-            INode* current = tail->getPrevious();
-            for (int i = size - 1; i > index; i--){
-                current=current->getPrevious();
-            }
-            INode* prev = current->getPrevious();
-            int data = dynamic_cast<Node_extended*>(prev)->getData();
-            current->setPrevious(prev->getPrevious());
-            delete prev;
-            size--;
-            return data;
-        }
-    }else return std::nullopt;
+    return remove(0);
 }
 
 std::optional<int> DLL::removeBack() {
-    if (size == 0) return std::nullopt;
-    return remove (size-1);
-}
-
-std::optional<int> DLL::get(int index) {
-    // Lista
-    // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    if(index >= 0 && index <= size) {
-        // 9, 8, 7, 6, 5
-        if (index < size / 2) {
-            INode *buf = head->getNext();
-            for (int i = 0; i < index; i++) {
-                buf = buf->getNext();
-            }
-            return dynamic_cast<Node_extended *>(buf)->getData();
-        // 4.
-        } else {
-            INode* buf = tail->getPrevious();
-            for (int i = size; i > index; i--) {
-                buf = buf->getPrevious();
-            }
-            return dynamic_cast<Node_extended *>(buf)->getData();
-        }
-    } else return std::nullopt;
+    return remove(size-1);
 }
 
 int DLL::find(int data) {
-    INode* current = head->getNext();// jesli head wskazuje na nullptr - brak elementów
+    INode* current = referenceNode->getNext();
     int i = 0;
     int found;
     while (i < size){
         found = dynamic_cast<Node_extended*>(current)->getData();
-        if ( found == data) return i;
-        else {
+        if (found == data) {
+            return i;
+        } else {
             i++;
-            current = current->getNext();
+            if (current->getNext()) {
+                current = current->getNext();
+            }
         }
     }
     return -1;
+}
+
+std::optional<int> DLL::get(int index) {
+    std::optional<Node_extended*> node = DLL::getByIndex(index);
+    if (!node.has_value()) return std::nullopt;
+    return node.value()->getData();
+}
+
+std::optional<Node_extended*> DLL::getByIndex(int index) {
+    if (index < 0 || index >= size) {
+        return std::nullopt;
+    }
+
+    if (index < size / 2) {
+        INode *buf = referenceNode->getNext();
+        for (int i = 0; i < index; i++) {
+            buf = buf->getNext();
+        }
+        return std::optional(dynamic_cast<Node_extended*>(buf));
+    } else {
+        INode* buf = referenceNode->getPrevious();
+        for (int i = size - 1; i > index; i--) {
+            buf = buf->getPrevious();
+        }
+        return std::optional(dynamic_cast<Node_extended*>(buf));
+    }
 }

@@ -2,8 +2,10 @@
 // Created by grzegorz on 25.03.24.
 //
 #include "Node_extended.h"
+#include "optional"
+#include <stdexcept>
 
-Node_extended::Node_extended(INode *_next, INode *_prev, int _data) : data(_data) {
+Node_extended::Node_extended(INode *_next, INode *_prev, std::optional<int> _data) : data(_data) {
     next = _next;
     prev = _prev;
 }
@@ -27,5 +29,8 @@ int Node_extended::setPrevious(INode *_previous) {
 }
 
 int Node_extended::getData() const {
-    return data;
+    if (!data.has_value()) {
+        throw std::runtime_error("Tried to get undefined value");
+    }
+    return data.value();
 }
