@@ -216,7 +216,7 @@ int main(){
 
     /*  LIST - HEAD   */
             case 1: // List(head)
-                cout << "Podaj liczbę danych dla list(head)" << endl;
+                cout << "Podaj liczbę danych dla list(head): " ;
                 size = typeNumber();
                 path = data_folder + "rev_" + to_string(size) + ".txt";
 
@@ -407,7 +407,7 @@ int main(){
         /* REMOVE BACK */
                         case 6:
                             cout << "\t# REMOVE BACK #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -433,11 +433,11 @@ int main(){
         /* FIND */
                         case 7:
                             cout << "\t# FIND #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // ile wartosci testowych z pliku find wykorzystac do pojedynczeho testu
-                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: ";
                             number_of_values = typeNumber();
                             path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
                             // odczyt danych losowych z pliku txt jesli istnieje
@@ -603,7 +603,7 @@ int main(){
         /* REMOVE FRONT */
                         case 4:
                             cout << "\t# REMOVE FRONT #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -671,7 +671,7 @@ int main(){
         /* REMOVE BACK */
                         case 6:
                             cout << "\t# REMOVE BACK #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -697,11 +697,11 @@ int main(){
         /* FIND */
                         case 7:
                             cout << "\t# FIND #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: ";
                             number_of_values = typeNumber();
                             path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
                             // odczyt danych losowych z pliku txt jesli istnieje
@@ -868,7 +868,7 @@ int main(){
         /* REMOVE FRONT */
                         case 4:
                             cout << "\t# REMOVE FRONT #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -936,7 +936,7 @@ int main(){
         /* REMOVE BACK */
                         case 6:
                             cout << "\t# REMOVE BACK #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -962,11 +962,11 @@ int main(){
         /* FIND */
                         case 7:
                             cout << "\t# FIND #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: ";
                             number_of_values = typeNumber();
                             path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
                             // odczyt danych losowych z pliku txt jesli istnieje
@@ -1012,7 +1012,7 @@ int main(){
 
     /*  DYNAMIC ARRAY */
             case 4:
-                cout << "Podaj liczbę danych dla dynamic array" << endl;
+                cout << "Podaj liczbę danych dla dynamic array: ";
                 size = typeNumber();
                 path = data_folder + "/" + to_string(size) + ".txt";
                 // sprawdza czy jest juz taka lista o takim rozmiarze czy nie
@@ -1132,7 +1132,7 @@ int main(){
         /* REMOVE FRONT */
                         case 4:
                             cout << "\t# REMOVE FRONT #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -1200,7 +1200,7 @@ int main(){
         /* REMOVE BACK */
                         case 6:
                             cout << "\t# REMOVE BACK #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // przygotuj odpowiednią ilość struktur
@@ -1227,11 +1227,11 @@ int main(){
         /* FIND */
                         case 7:
                             cout << "\t# FIND #" << endl;
-                            cout << "Liczba testów: " << endl;
+                            cout << "Liczba testów: ";
                             number = typeNumber();
                             if (number <= 0) break;
                             // odczyt danych losowych z pliku txt jesli istnieje
-                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: " << endl;
+                            cout << "Liczba wartosci testowych bbb w pliku find_aaa_bbb.txt: ";
                             number_of_values = typeNumber();
                             path = data_folder + "find_" + to_string(size) + "_" + to_string(number_of_values)+ ".txt";
                             // odczyt danych losowych z pliku txt jesli istnieje
