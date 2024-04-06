@@ -7,3 +7,4 @@ liczba danych, czas [ms], liczba testów, liczba wartości szukanych w każdym t
 16384,0.014877142857,10,35
 24576,0.026450000000,10,20
 32768,0.027125000000,10,20
+4096,0.003370000000,1,100

@@ -482,7 +482,7 @@ int main(){
 
     /*  LIST - HEAD TAIL   */
             case 2:
-                cout << "Podaj liczbę danych dla list(head, tail)" << endl;
+                cout << "Podaj liczbę danych dla list(head, tail): ";
                 size = typeNumber();
                 path = data_folder + to_string(size) + ".txt";
 
@@ -747,7 +747,7 @@ int main(){
 
     /*  DOUBLE LINKED LIST   */
             case 3:
-                cout << "Podaj liczbę danych dla double linked list" << endl;
+                cout << "Podaj liczbę danych dla double linked list: ";
                 size = typeNumber();
                 path = data_folder + "/" + to_string(size) + ".txt";
 
